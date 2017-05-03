@@ -12,16 +12,18 @@
         android:layout_height="wrap_content"
         android:paddingTop="16sp"
         android:paddingLeft="8sp"
+        android:paddingBottom="16sp"
         android:textColor="#000000"
-        android:text="QUANTITY" />
+        android:textAllCaps="true"
+        android:text="Quantity" />
 
     <TextView
         android:id="@+id/quantity_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="16sp"
         android:paddingLeft="8sp"
         android:textColor="#000000"
+        android:textSize="16sp"
         android:text="0" />
 
     <Button
@@ -30,6 +32,8 @@
         android:layout_marginTop="16sp"
         android:layout_marginLeft="8sp"
         android:textColor="#000000"
-        android:text="ORDER" />
+        android:textAllCaps="true"
+        android:text="Order"
+        android:onClick="submitOrder" />
 
 </LinearLayout>
