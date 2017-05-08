@@ -7,11 +7,14 @@
 
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
@@ -35,7 +38,15 @@ public class MainActivity extends AppCompatActivity {
         int price = calculatePrice(hasWhippedCream, hasChocolate);
         String customerName = ((TextView) findViewById(R.id.customer_name)).getText().toString();
         String priceMessage = createOrderSummary(customerName, price, hasWhippedCream, hasChocolate);
-        displayMessage(priceMessage);
+
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee Order Summary for " + customerName);
+        intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     private String createOrderSummary(String customerName, int price, boolean hasWhippedCream, boolean hasChocolate) {
@@ -62,11 +73,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate) {
         int price = 5;
-        if (hasWhippedCream && hasChocolate) {
-            price += 3;
-        } else if (hasWhippedCream) {
+        if (hasWhippedCream) {
             price += 1;
-        } else if (hasChocolate) {
+        }
+        if (hasChocolate) {
             price += 2;
         }
         return quantity * price;
@@ -76,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
      * This method increments quantity by 1 when + button is clicked
      */
     public void increment(View view) {
+        if (quantity >= 100) {
+            Toast.makeText(this, "You cannot have more than 100 coffees", Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity = quantity + 1;
         displayQuantity(quantity);
     }
@@ -84,16 +98,12 @@ public class MainActivity extends AppCompatActivity {
      * This method decrements quantity by 1 when - button is clicked
      */
     public void decrement(View view) {
+        if (quantity <= 1) {
+            Toast.makeText(this, "You cannot have fewer than 1 coffee", Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity = quantity - 1;
         displayQuantity(quantity);
-    }
-
-    /**
-     * This method displays the given text on the screen.
-     */
-    public void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 
 }
