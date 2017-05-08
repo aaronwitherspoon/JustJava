@@ -32,13 +32,18 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         int price = calculatePrice();
         boolean hasWhippedCream = ((CheckBox) findViewById(R.id.whipped_cream)).isChecked();
-        String priceMessage = createOrderSummary(price, hasWhippedCream);
+        boolean hasChocolate = ((CheckBox) findViewById(R.id.chocolate)).isChecked();
+        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate);
         displayMessage(priceMessage);
     }
 
-    private String createOrderSummary(int price, boolean hasWhippedCream) {
+    private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate) {
         String priceMessage = "Name: Aaron";
-        priceMessage += "\nQuantity: " + quantity + "\nAdd whipped cream? " + hasWhippedCream + "\nTotal: $" + price + "\nThank you!";
+        priceMessage += "\nQuantity: " + quantity;
+        priceMessage += "\nAdd whipped cream? " + hasWhippedCream;
+        priceMessage += "\nAdd chocolate? " + hasChocolate;
+        priceMessage += "\nTotal: $" + price;
+        priceMessage += "\nThank you!";
         return priceMessage;
     }
 
