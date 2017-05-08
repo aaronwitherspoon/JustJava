@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = calculatePrice();
         boolean hasWhippedCream = ((CheckBox) findViewById(R.id.whipped_cream)).isChecked();
         boolean hasChocolate = ((CheckBox) findViewById(R.id.chocolate)).isChecked();
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
         String customerName = ((TextView) findViewById(R.id.customer_name)).getText().toString();
         String priceMessage = createOrderSummary(customerName, price, hasWhippedCream, hasChocolate);
         displayMessage(priceMessage);
@@ -60,8 +60,16 @@ public class MainActivity extends AppCompatActivity {
      * Calculates the price of the order.
      *
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate) {
+        int price = 5;
+        if (hasWhippedCream && hasChocolate) {
+            price += 3;
+        } else if (hasWhippedCream) {
+            price += 1;
+        } else if (hasChocolate) {
+            price += 2;
+        }
+        return quantity * price;
     }
 
     /**
