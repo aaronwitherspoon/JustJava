@@ -1,100 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.android.justjava.MainActivity"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="16sp"
-        android:paddingLeft="8sp"
-        android:paddingBottom="16sp"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:text="Toppings" />
-
-    <CheckBox
-        android:id="@+id/whipped_cream"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:paddingLeft="24dp"
-        android:textSize="16sp"
-        android:text="Whipped Cream"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="16sp"
-        android:paddingLeft="8sp"
-        android:paddingBottom="16sp"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:text="Quantity" />
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:textColor="#000000"
-            android:text="-"
-            android:onClick="decrement" />
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.android.justjava.MainActivity"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/quantity_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="16sp"
+            android:paddingLeft="8sp"
+            android:paddingBottom="16sp"
+            android:textColor="#000000"
+            android:textAllCaps="true"
+            android:text="Toppings" />
+
+        <CheckBox
+            android:id="@+id/whipped_cream"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:paddingLeft="24dp"
+            android:textSize="16sp"
+            android:text="Whipped Cream"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16sp"
+            android:paddingLeft="8sp"
+            android:paddingBottom="16sp"
+            android:textColor="#000000"
+            android:textAllCaps="true"
+            android:text="Quantity" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textColor="#000000"
+                android:text="-"
+                android:onClick="decrement" />
+
+            <TextView
+                android:id="@+id/quantity_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:text="2" />
+
+            <Button
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="8dp"
+                android:textColor="#000000"
+                android:text="+"
+                android:onClick="increment" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8sp"
+            android:paddingTop="16sp"
+            android:paddingBottom="16sp"
+            android:textColor="#000000"
+            android:textAllCaps="true"
+            android:text="Order Summary" />
+
+        <TextView
+            android:id="@+id/order_summary_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8sp"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:text="2" />
+            android:text="$10" />
 
         <Button
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16sp"
+            android:layout_marginLeft="8sp"
             android:textColor="#000000"
-            android:text="+"
-            android:onClick="increment" />
+            android:textAllCaps="true"
+            android:text="Order"
+            android:onClick="submitOrder" />
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="8sp"
-        android:paddingTop="16sp"
-        android:paddingBottom="16sp"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:text="Order Summary" />
-
-    <TextView
-        android:id="@+id/order_summary_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="8sp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="$10" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16sp"
-        android:layout_marginLeft="8sp"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:text="Order"
-        android:onClick="submitOrder" />
-
-</LinearLayout>
+</ScrollView>
